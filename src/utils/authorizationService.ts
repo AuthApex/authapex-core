@@ -54,4 +54,13 @@ export class AuthorizationService {
       } as UserRequest)
       .then((res) => res.data);
   }
+
+  public async logout(session: string): Promise<void> {
+    return axios
+      .post<void>(this.authApi + '/api/logout', {
+        session,
+        app: this.app,
+      } as UserRequest)
+      .then((res) => res.data);
+  }
 }
