@@ -1,4 +1,4 @@
-import { PermRoles } from '@/models/roles';
+import { PERM_ROLES, PermRoles } from '@/models/roles';
 import { User } from '@/models/user';
 
 export class PermissionService {
@@ -10,5 +10,10 @@ export class PermissionService {
       return 'user';
     }
     return application.role;
+  }
+
+  public hasPermission(user: User, permission: PermRoles): boolean {
+    const usersPermission = this.getPermission(user);
+    return PERM_ROLES[usersPermission] >= PERM_ROLES[permission];
   }
 }
