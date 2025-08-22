@@ -12,8 +12,12 @@ export class AuthorizationService {
   public encodeAuthorizeData(authorizeData: AuthorizeData): string {
     return btoa(JSON.stringify(authorizeData));
   }
-  public decodeAuthorizeData(rawAuthorizeData: string): AuthorizeData {
-    return JSON.parse(atob(rawAuthorizeData));
+  public decodeAuthorizeData(rawAuthorizeData: string): AuthorizeData | null {
+    try {
+      return rawAuthorizeData != '' && rawAuthorizeData != null ? JSON.parse(atob(rawAuthorizeData)) : null;
+    } catch {
+      return null;
+    }
   }
 
   public createAuthorizeUrl(): string {
