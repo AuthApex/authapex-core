@@ -1,5 +1,5 @@
-import { AuthorizeData, AuthorizeTokenResponse, TokenRequest } from '@/models/authorization';
-import { GetUserResponse, User, UserRequest } from '@/models/user';
+import { AuthorizeData, TokenRequest } from '@/models/authorization';
+import { User } from '@/models/user';
 import axios from 'axios';
 
 export class AuthorizationService {
@@ -32,39 +32,12 @@ export class AuthorizationService {
     return this.authApi + '/authorize?' + params.toString();
   }
 
-  public async authorizeToken(authCode: string): Promise<AuthorizeTokenResponse> {
+  public async authorize(authCode: string): Promise<User> {
     return axios
-      .post<AuthorizeTokenResponse>(this.authApi + '/api/authorize/token', {
+      .post<User>(this.authApi + '/api/authorize', {
         authCode: authCode,
         app: this.app,
       } as TokenRequest)
-      .then((res) => res.data);
-  }
-
-  public async authorizeUser(authCode: string): Promise<User> {
-    return axios
-      .post<User>(this.authApi + '/api/authorize/user', {
-        authCode: authCode,
-        app: this.app,
-      } as TokenRequest)
-      .then((res) => res.data);
-  }
-
-  public async getUser(session: string): Promise<GetUserResponse> {
-    return axios
-      .post<GetUserResponse>(this.authApi + '/api/user', {
-        session,
-        app: this.app,
-      } as UserRequest)
-      .then((res) => res.data);
-  }
-
-  public async logout(session: string): Promise<void> {
-    return axios
-      .post<void>(this.authApi + '/api/logout', {
-        session,
-        app: this.app,
-      } as UserRequest)
       .then((res) => res.data);
   }
 }
