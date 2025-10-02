@@ -1,21 +1,16 @@
 import { RoleModel } from '@/models/roles';
 
-export interface User {
+export interface UserCore {
   userId: string;
   username: string;
+}
+
+export interface UserVariable {
   email: string;
   roles: RoleModel[];
   displayName: string;
-  profileImageId?: string;
-  profileImageUrl?: string;
+  profileImageId?: string | null;
+  profileImageUrl?: string | null;
 }
 
-export interface UserRequest {
-  session: string;
-  app: string;
-}
-
-export interface GetUserResponse {
-  expiresAt: string;
-  user: User;
-}
+export interface User extends UserCore, UserVariable {}
