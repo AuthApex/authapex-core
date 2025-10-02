@@ -4,3 +4,4 @@ export * from './models/user';
 export * from './models/websockets';
 export * from './utils/authorizationService';
 export * from './utils/permissionService';
+export * from './utils/userService';
