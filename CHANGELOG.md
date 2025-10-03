@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/AuthApex/authapex-core/compare/v0.1.3...v0.2.0) (2025-10-03)
+
+
+### Features
+
+* add `UserService` for user cache management and export in index ([c57e61a](https://github.com/AuthApex/authapex-core/commit/c57e61a3ce2c0ec8ec9f651ad6f1a90c2bec008b))
+* export WebSocket models and remove unused `AuthorizeTokenResponse` interface ([94ac8f1](https://github.com/AuthApex/authapex-core/commit/94ac8f185c6dd8e0da7d4b6561c5fa76640fec1d))
+* introduce WebSocket event interfaces for user updates and deletions ([3bea8bb](https://github.com/AuthApex/authapex-core/commit/3bea8bbe06ce5bb37a99d4f9026f0cc603d7b721))
+* simplify `AuthorizationService` by merging methods and removing unused APIs ([be4b4fb](https://github.com/AuthApex/authapex-core/commit/be4b4fb992811eed2c29f89cf0396e0ac8db1147))
+
+
+### Bug Fixes
+
+* update axios peer dependency to ^1.12.0 ([25a51ca](https://github.com/AuthApex/authapex-core/commit/25a51ca44d5dc1c1dd7bfaa5d58a63147a24597d))
+
 ### [0.1.3](https://github.com/AuthApex/authapex-core/compare/v0.1.2...v0.1.3) (2025-08-22)
 
 
