@@ -1,7 +1,10 @@
-import { User, UserVariable } from '@/models/user';
+import { SimpleUser, User, UserVariable } from '@/models/user';
+import axios from 'axios';
 
 export class UserService {
   private readonly cache = new Map<string, User>();
+
+  constructor(private readonly authApi: string) {}
 
   public addUserToCache(sessionId: string, user: User): void {
     this.cache.set(sessionId, user);
@@ -17,5 +20,9 @@ export class UserService {
       username: user.username,
       ...userVariable,
     };
+  }
+
+  public async getUserData(userId: string): Promise<SimpleUser> {
+    return axios.get<SimpleUser>(this.authApi + '/api/user?userId=' + userId).then((res) => res.data);
   }
 }
