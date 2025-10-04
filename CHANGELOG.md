@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/AuthApex/authapex-core/compare/v0.2.3...v0.2.4) (2025-10-04)
+
+
+### Bug Fixes
+
+* update `UserService` to use correct API endpoint for fetching user data ([dfbaf22](https://github.com/AuthApex/authapex-core/commit/dfbaf22fa89d74f3784aeacb1357792be51ab055))
+
 ### [0.2.3](https://github.com/AuthApex/authapex-core/compare/v0.2.2...v0.2.3) (2025-10-04)
 
 
