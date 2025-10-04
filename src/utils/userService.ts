@@ -10,7 +10,7 @@ export class UserService {
   constructor(
     private readonly authApi: string,
     private readonly app: string,
-    private readonly apiKey: string
+    private readonly apiKey?: string
   ) {}
 
   public addUserToCache(sessionId: string, user: User): void {
