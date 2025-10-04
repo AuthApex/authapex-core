@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.5](https://github.com/AuthApex/authapex-core/compare/v0.2.4...v0.2.5) (2025-10-04)
+
+
+### Features
+
+* add `apiKey` support to `AuthorizationService` and `UserService` constructor and methods ([00ae53f](https://github.com/AuthApex/authapex-core/commit/00ae53fae712604f435af8105bdab4f71aa4bf73))
+
 ### [0.2.4](https://github.com/AuthApex/authapex-core/compare/v0.2.3...v0.2.4) (2025-10-04)
 
 
