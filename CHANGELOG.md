@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/AuthApex/authapex-core/compare/v0.2.0...v0.2.1) (2025-10-03)
+
+
+### Features
+
+* add `getUserData` method to `UserService` and introduce `SimpleUser` model ([3eb0320](https://github.com/AuthApex/authapex-core/commit/3eb03205ed67c166c87e8b671484b160ed25248a))
+* integrate `date-fns` for cache expiration in `UserService` and enhance caching mechanisms ([1b6a508](https://github.com/AuthApex/authapex-core/commit/1b6a508fc0164d2d8dce0af985feadf5257a1672))
+
 ## [0.2.0](https://github.com/AuthApex/authapex-core/compare/v0.1.3...v0.2.0) (2025-10-03)
 
 
