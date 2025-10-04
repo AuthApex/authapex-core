@@ -35,7 +35,7 @@ export class UserService {
 
   public async getUpdatedUser({ userId, apiKey }: { userId: string; apiKey?: string }): Promise<User> {
     return axios
-      .get<User>(this.authApi, {
+      .get<User>(this.authApi + '/api/user', {
         params: {
           userId: userId,
           app: this.app,
