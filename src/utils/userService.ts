@@ -1,10 +1,16 @@
-import { User, UserVariable } from '@/models/user';
+import { User } from '@/models/user';
 import { addHours, isAfter } from 'date-fns';
+import axios from 'axios';
 
 export class UserService {
   private cacheTime: Date = new Date();
 
   private readonly cache = new Map<string, User>();
+
+  constructor(
+    private readonly authApi: string,
+    private readonly app: string
+  ) {}
 
   public addUserToCache(sessionId: string, user: User): void {
     this.checkAndInvalidateOldCache();
@@ -16,22 +22,26 @@ export class UserService {
     return this.cache.get(sessionId);
   }
 
-  public updateUserWithVariables(user: User, userVariable: UserVariable): User {
-    this.checkAndInvalidateOldCache();
-    const updatedUser = {
-      userId: user.userId,
-      username: user.username,
-      ...userVariable,
-    };
-
-    this.cache.set(user.userId, updatedUser);
-    return updatedUser;
+  public clearCache(): void {
+    this.cache.clear();
+    this.cacheTime = new Date();
   }
 
   private checkAndInvalidateOldCache(): void {
     if (isAfter(new Date(), addHours(this.cacheTime, 1))) {
-      this.cache.clear();
-      this.cacheTime = new Date();
+      this.clearCache();
     }
+  }
+
+  public async getUpdatedUser({ userId, apiKey }: { userId: string; apiKey?: string }): Promise<User> {
+    return axios
+      .get<User>(this.authApi, {
+        params: {
+          userId: userId,
+          app: this.app,
+          apiKey: apiKey,
+        },
+      })
+      .then((res) => res.data);
   }
 }
