@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/AuthApex/authapex-core/compare/v0.2.1...v0.2.2) (2025-10-04)
+
+
+### Features
+
+* consolidate WebSocket user event data interfaces for streamlined handling ([6e7e259](https://github.com/AuthApex/authapex-core/commit/6e7e2595c7bbd66cd8d22e911024ba630d7a8985))
+* remove `SimpleUser` model and its related methods from `UserService` to streamline caching logic ([eab1632](https://github.com/AuthApex/authapex-core/commit/eab1632750bf9d973501bc323041885801209eb3))
+
 ### [0.2.1](https://github.com/AuthApex/authapex-core/compare/v0.2.0...v0.2.1) (2025-10-03)
 
 
