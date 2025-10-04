@@ -1,14 +1,10 @@
-import { SimpleUser, User, UserVariable } from '@/models/user';
-import axios from 'axios';
+import { User, UserVariable } from '@/models/user';
 import { addHours, isAfter } from 'date-fns';
 
 export class UserService {
   private cacheTime: Date = new Date();
 
   private readonly cache = new Map<string, User>();
-  private readonly simpleUserCache = new Map<string, SimpleUser>();
-
-  constructor(private readonly authApi: string) {}
 
   public addUserToCache(sessionId: string, user: User): void {
     this.checkAndInvalidateOldCache();
@@ -21,29 +17,20 @@ export class UserService {
   }
 
   public updateUserWithVariables(user: User, userVariable: UserVariable): User {
-    return {
+    this.checkAndInvalidateOldCache();
+    const updatedUser = {
       userId: user.userId,
       username: user.username,
       ...userVariable,
     };
-  }
 
-  public async getSimpleUser(userId: string): Promise<SimpleUser> {
-    this.checkAndInvalidateOldCache();
-    if (this.simpleUserCache.has(userId)) {
-      return this.simpleUserCache.get(userId)!;
-    }
-    const simpleUser = await axios.get<SimpleUser>(this.authApi + '/api/user?userId=' + userId).then((res) => res.data);
-
-    this.simpleUserCache.set(userId, simpleUser);
-
-    return simpleUser;
+    this.cache.set(user.userId, updatedUser);
+    return updatedUser;
   }
 
   private checkAndInvalidateOldCache(): void {
     if (isAfter(new Date(), addHours(this.cacheTime, 1))) {
       this.cache.clear();
-      this.simpleUserCache.clear();
       this.cacheTime = new Date();
     }
   }
