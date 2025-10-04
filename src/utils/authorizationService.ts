@@ -6,7 +6,8 @@ export class AuthorizationService {
   constructor(
     private readonly authApi: string,
     private readonly app: string,
-    private readonly redirectUrl: string
+    private readonly redirectUrl: string,
+    private readonly apiKey?: string
   ) {}
 
   public encodeAuthorizeData(authorizeData: AuthorizeData): string {
@@ -37,6 +38,7 @@ export class AuthorizationService {
       .post<User>(this.authApi + '/api/authorize', {
         authCode: authCode,
         app: this.app,
+        apiKey: this.apiKey,
       } as TokenRequest)
       .then((res) => res.data);
   }

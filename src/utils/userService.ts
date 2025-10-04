@@ -9,7 +9,8 @@ export class UserService {
 
   constructor(
     private readonly authApi: string,
-    private readonly app: string
+    private readonly app: string,
+    private readonly apiKey: string
   ) {}
 
   public addUserToCache(sessionId: string, user: User): void {
@@ -33,13 +34,13 @@ export class UserService {
     }
   }
 
-  public async getUpdatedUser({ userId, apiKey }: { userId: string; apiKey?: string }): Promise<User> {
+  public async getUpdatedUser(userId: string): Promise<User> {
     return axios
       .get<User>(this.authApi + '/api/user', {
         params: {
           userId: userId,
           app: this.app,
-          apiKey: apiKey,
+          apiKey: this.apiKey,
         },
       })
       .then((res) => res.data);
