@@ -1,22 +1,15 @@
-import { UserVariable } from '@/models/user';
-
-export interface WebSocketUserUpdateEventData {
-  userId: string;
-  updatedUser: UserVariable;
-}
-
-export interface WebSocketUserDeleteEventData {
+export interface WebSocketUserIdEventData {
   userId: string;
 }
 
 export interface WebSocketUserUpdateEvent {
   type: 'user-update';
-  data: WebSocketUserUpdateEventData;
+  data: WebSocketUserIdEventData;
 }
 
 export interface WebSocketUserDeleteEvent {
   type: 'user-deleted';
-  data: WebSocketUserDeleteEventData;
+  data: WebSocketUserIdEventData;
 }
 
 export type WebSocketEvent = WebSocketUserUpdateEvent | WebSocketUserDeleteEvent;
