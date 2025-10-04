@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/AuthApex/authapex-core/compare/v0.2.2...v0.2.3) (2025-10-04)
+
+
+### Features
+
+* enhance `UserService` with external API support and refine cache management ([99bf2fb](https://github.com/AuthApex/authapex-core/commit/99bf2fb53abf8f97fb2f8958fc5fb830ff174e59))
+
 ### [0.2.2](https://github.com/AuthApex/authapex-core/compare/v0.2.1...v0.2.2) (2025-10-04)
 
 
