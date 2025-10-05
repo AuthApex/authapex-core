@@ -14,10 +14,15 @@ export class UserService {
     private readonly apiKey?: string
   ) {}
 
-  public addUserToCache(sessionId: string, user: User): void {
+  public addSessionToCache(sessionId: string, user: User): void {
     this.checkAndInvalidateOldCache();
     this.SESSION_CACHE.set(sessionId, user.userId);
     this.USER_CACHE.set(user.userId, user);
+  }
+
+  public addUserToCache(userId: string, user: User): void {
+    this.checkAndInvalidateOldCache();
+    this.USER_CACHE.set(userId, user);
   }
 
   public getUserFromCacheBySessionId(sessionId: string): User | undefined {
