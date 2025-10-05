@@ -5,7 +5,8 @@ import axios from 'axios';
 export class UserService {
   private cacheTime: Date = new Date();
 
-  private readonly cache = new Map<string, User>();
+  private readonly SESSION_CACHE = new Map<string, string>();
+  private readonly USER_CACHE = new Map<string, User>();
 
   constructor(
     private readonly authApi: string,
@@ -15,16 +16,24 @@ export class UserService {
 
   public addUserToCache(sessionId: string, user: User): void {
     this.checkAndInvalidateOldCache();
-    this.cache.set(sessionId, user);
+    this.SESSION_CACHE.set(sessionId, user.userId);
+    this.USER_CACHE.set(user.userId, user);
   }
 
-  public getUserFromCache(sessionId: string): User | undefined {
+  public getUserFromCacheBySessionId(sessionId: string): User | undefined {
     this.checkAndInvalidateOldCache();
-    return this.cache.get(sessionId);
+    const userId = this.SESSION_CACHE.get(sessionId);
+    return userId ? this.USER_CACHE.get(userId) : undefined;
+  }
+
+  public getUserFromCacheByUserId(userId: string): User | undefined {
+    this.checkAndInvalidateOldCache();
+    return this.USER_CACHE.get(userId);
   }
 
   public clearCache(): void {
-    this.cache.clear();
+    this.SESSION_CACHE.clear();
+    this.USER_CACHE.clear();
     this.cacheTime = new Date();
   }
 
@@ -35,7 +44,7 @@ export class UserService {
   }
 
   public async getUpdatedUser(userId: string): Promise<User> {
-    return axios
+    const user = await axios
       .get<User>(this.authApi + '/api/user', {
         params: {
           userId: userId,
@@ -44,5 +53,7 @@ export class UserService {
         },
       })
       .then((res) => res.data);
+    this.USER_CACHE.set(userId, user);
+    return user;
   }
 }
