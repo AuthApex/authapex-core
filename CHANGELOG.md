@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.6](https://github.com/AuthApex/authapex-core/compare/v0.2.5...v0.2.6) (2025-10-05)
+
+
+### Features
+
+* add `addUserToCache` method in `UserService` and rename `addUserToCache` to `addSessionToCache` for clarity ([dcd20fc](https://github.com/AuthApex/authapex-core/commit/dcd20fc936332a63cb66ef20d2851328c08c46c2))
+* make `apiKey` optional in `UserService` constructor ([c61ea6d](https://github.com/AuthApex/authapex-core/commit/c61ea6d0297889c74d2b7d044999cc071196ee62))
+* refactor `UserService` to separate session and user caches, add retrieval by userId ([56be234](https://github.com/AuthApex/authapex-core/commit/56be234b5e7adbb511afa2c7a6d944296c0d9b9c))
+
 ### [0.2.5](https://github.com/AuthApex/authapex-core/compare/v0.2.4...v0.2.5) (2025-10-04)
 
 
