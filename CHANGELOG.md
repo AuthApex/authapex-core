@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.7](https://github.com/AuthApex/authapex-core/compare/v0.2.6...v0.2.7) (2025-10-10)
+
+
+### Features
+
+* add `WebSocketSessionDeleteEvent` to `WebSocketEvent` type ([0c4155e](https://github.com/AuthApex/authapex-core/commit/0c4155ec26dee2d52639f76a000ab0d2344949d5))
+
 ### [0.2.6](https://github.com/AuthApex/authapex-core/compare/v0.2.5...v0.2.6) (2025-10-05)
 
 
