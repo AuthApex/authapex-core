@@ -6,10 +6,9 @@ export interface WebSocketUserUpdateEvent {
   type: 'user-update';
   data: WebSocketUserIdEventData;
 }
-
-export interface WebSocketUserDeleteEvent {
-  type: 'user-deleted';
+export interface WebSocketSessionDeleteEvent {
+  type: 'session-deleted';
   data: WebSocketUserIdEventData;
 }
 
-export type WebSocketEvent = WebSocketUserUpdateEvent | WebSocketUserDeleteEvent;
+export type WebSocketEvent = WebSocketUserUpdateEvent | WebSocketSessionDeleteEvent;
