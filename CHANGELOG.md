@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/AuthApex/authapex-core/compare/v0.2.7...v0.3.0) (2026-05-17)
+
+
+### Features
+
+* refactor service constructors to use options objects for improved flexibility and add support for `webhookUrl` in `AuthorizationService` ([493d971](https://github.com/AuthApex/authapex-core/commit/493d97122be127cc010bced8f0f28b8e35d2b892))
+
 ### [0.2.7](https://github.com/AuthApex/authapex-core/compare/v0.2.6...v0.2.7) (2025-10-10)
 
 
