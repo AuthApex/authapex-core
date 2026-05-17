@@ -7,7 +7,7 @@ export interface AuthorizationServiceOptions {
   app: string;
   redirectUrl: string;
   apiKey?: string;
-  webhookUrl?: string;
+  websocketEndpoint?: string;
 }
 
 export class AuthorizationService {
@@ -42,7 +42,7 @@ export class AuthorizationService {
         authCode: authCode,
         app: this.options.app,
         apiKey: this.options.apiKey,
-        webhookUrl: this.options.webhookUrl,
+        websocketEndpoint: this.options.websocketEndpoint,
       } satisfies TokenRequest)
       .then((res) => res.data);
   }
