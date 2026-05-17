@@ -2,17 +2,19 @@ import { User } from '@/models/user';
 import { addHours, isAfter } from 'date-fns';
 import axios from 'axios';
 
+export interface UserServiceOptions {
+  authApi: string;
+  app: string;
+  apiKey?: string;
+}
+
 export class UserService {
   private cacheTime: Date = new Date();
 
   private readonly SESSION_CACHE = new Map<string, string>();
   private readonly USER_CACHE = new Map<string, User>();
 
-  constructor(
-    private readonly authApi: string,
-    private readonly app: string,
-    private readonly apiKey?: string
-  ) {}
+  constructor(private readonly options: UserServiceOptions) {}
 
   public addSessionToCache(sessionId: string, user: User): void {
     this.checkAndInvalidateOldCache();
@@ -43,18 +45,18 @@ export class UserService {
   }
 
   private checkAndInvalidateOldCache(): void {
-    if (isAfter(new Date(), addHours(this.cacheTime, 1))) {
+    if (isAfter(new Date(), addHours(this.cacheTime, 2))) {
       this.clearCache();
     }
   }
 
   public async getUpdatedUser(userId: string): Promise<User> {
     const user = await axios
-      .get<User>(this.authApi + '/api/user', {
+      .get<User>(this.options.authApi + '/api/user', {
         params: {
           userId: userId,
-          app: this.app,
-          apiKey: this.apiKey,
+          app: this.options.app,
+          apiKey: this.options.apiKey,
         },
       })
       .then((res) => res.data);

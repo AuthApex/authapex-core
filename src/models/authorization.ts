@@ -6,4 +6,6 @@ export interface AuthorizeData {
 export interface TokenRequest {
   authCode: string;
   app: string;
+  apiKey?: string | null;
+  webhookUrl?: string | null;
 }
